@@ -1,33 +1,37 @@
 # 2. Printarea pieselor 3D
 
-Fișierele sunt pe Printables: <https://www.printables.com/model/524971-filling-machine-hanimandl/files>
-(butonul **Download → All model files**). Pachetul conține STL-urile și proiectul **Fusion 360 (.f3d)**,
-util dacă vrei să muți butoanele sau să adaptezi suporturile la alte componente.
+Toate fișierele sunt în repo, în [`hardware/stl/`](../hardware/stl/) (8 piese). Pentru modificări:
+[`hardware/step/`](../hardware/step/) sau proiectul Fusion 360 `hardware/hanimandl-rallef80.f3d`.
+Autorul a printat **totul în PLA**. Consum estimat: **~250–300 g** de filament. Cea mai mare piesă are
+168 mm, deci încape pe orice imprimantă cu masa de minim 180 × 180 mm.
 
-## Piese
+## Piese și orientare pe masă
 
-| Modul | Piese | Observații |
-|-------|-------|------------|
-| **Unitate de control** | carcasă – partea de sus, carcasă – partea de jos | Cele două părți se îmbină prin presare, fără șuruburi. Din 11/2023 partea de sus e simplificată: placa Heltec se așază în locaș și se fixează cu superglue. |
-| **Cântar** | partea de jos (suportul celulei + HX711), placa de sus (prinsă cu șuruburi de celulă), capac de protecție | Capacul se pune peste placa de sus ca mierea să nu picure pe șuruburi. |
-| **Mecanism robinet** | suport servo (se prinde fix de robinet), roată dințată pentru robinet, roată dințată / braț pentru servo | Folosește cea mai nouă versiune a roții robinetului (ex. „hahn-zahnrad-v106”) dacă sunt mai multe variante. |
+Unele STL-uri sunt exportate cu fața plată mare **în sus**. Întoarce-le ca să stea pe fața mare
+(PrusaSlicer: tasta **F** / *Place on face*; Cura: *Lay flat* / *Select face to align to build plate*):
 
-## Setări de printare recomandate
+| Fișier | Dimensiuni (mm) | Orientare | Setări recomandate |
+|--------|-----------------|-----------|--------------------|
+| `housing-ground-part.stl` | 130 × 88 × 31 | așa cum e | 3 pereți, 15–20 % |
+| `housing-upper-part.stl` | 130 × 88 × 25 | **întoarce-o** (fața de sus a capacului pe masă) | 3 pereți, 15–20 % |
+| `scale-ground-plate.stl` | 94 × 94 × 21 | **întoarce-o** (fața plată pe masă) | 4 pereți, 30 % |
+| `scale-top-plate.stl` | 104 × 104 × 12 | **întoarce-o** (fața plată pe masă) | 4 pereți, 30 % |
+| `scale-topping-plate.stl` | 110 × 110 × 13 | **întoarce-o** (fața plată pe masă) | 3 pereți, 15 % |
+| `servo-mounting-plate.stl` | 159 × 98 × 12 | **culcă-o** pe fața mare de 159 × 98 (exportată în picioare) | 5 pereți, 50 % |
+| `gear-on-servo.stl` | 46 × 46 × 15 | așa cum e | 5 pereți, 60–100 %, strat 0,12–0,16 mm |
+| `gear-arm.stl` | 168 × 63 × 19 | așa cum e | 5 pereți, 50–100 %, strat 0,12–0,16 mm |
 
-Autorul a printat **totul în PLA**. Setări uzuale care funcționează bine:
+Setări generale: strat 0,2 mm (piesele cu dinți 0,12–0,16 mm pentru precizie), fără suporturi
+în orientările de mai sus (dacă slicer-ul semnalează surplombe mari, activează suporturi doar pe masă).
 
-| Setare | Carcase / cântar | Roți dințate / suport servo |
-|--------|------------------|------------------------------|
-| Înălțime strat | 0,2 mm | 0,12–0,16 mm (dinți mai preciși) |
-| Pereți (perimetre) | 3 | 4–5 |
-| Umplere | 15–20 % | 40–100 % |
-| Suporturi | doar unde slicer-ul indică surplombe mari | în general nu |
+## Sfaturi
 
-Sfaturi:
-
-- Roțile dințate și suportul servo preiau tot cuplul servo-ului – printează-le solid (mulți pereți,
-  umplere mare). PETG este o alternativă mai rezistentă la căldură dacă atelierul e cald vara.
-- Verifică ajustajul roții pe maneta robinetului înainte de a printa restul; dacă e prea strâns/larg,
-  scalează ușor piesa în slicer (ex. 100,5 % / 99,5 %) sau modific-o în Fusion.
-- Piesele nu stau în contact direct cu mierea (doar eventuale picături pe capacul cântarului), dar
-  păstrează-le curate; PLA nu suportă spălarea la apă fierbinte.
+- **Roțile dințate și suportul servo** preiau tot cuplul servo-ului de 20 kg – printează-le solid.
+  PETG e o alternativă mai rezistentă dacă atelierul e cald vara.
+- Verifică pe primele straturi că găurile ies corect; la nevoie folosește *hole compensation* /
+  *XY compensation* în slicer. Diametrele din model: M3 → Ø3,2, M4 → Ø4,1, M5 → Ø5,1, M6 → Ø6,0.
+- Printează mai întâi `servo-mounting-plate` și probează-l pe robinetul tău (arcul de prindere are
+  Ø ~54,5 mm, făcut pentru robinetul **Imgut**). Dacă nu se potrivește, modifică în Fusion/STEP
+  înainte să printezi restul mecanismului.
+- Piesele nu stau în contact direct cu mierea (doar eventuale picături pe capacul cântarului).
+  PLA nu suportă apa fierbinte – curăță cu apă călduță.

@@ -84,7 +84,9 @@ Verifică întotdeauna eticheta tipărită pe placa ta înainte de a lipi.
 
 ## Cabluri între module
 
-Unitatea de control e separată de cântar și de servo. Recomandat:
+Unitatea de control e separată de cântar și de servo. În designul autorului cablurile ies direct prin
+cele două găuri Ø6,1 din cutie (fără conectori). Dacă vrei să poți demonta modulele, poți folosi
+conectori – atunci va trebui să mărești găurile:
 
 | Legătură | Fire | Sugestie conector |
 |----------|:----:|-------------------|

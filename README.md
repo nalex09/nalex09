@@ -48,6 +48,7 @@ firmware/
   src/hanimandl.cpp     firmware HaniMandl v0.2.13 (cu QUETSCHHAHN_LINKS activat)
   bin/                  firmware gata compilat (se încarcă din browser, la adresa 0x0)
   UPSTREAM.md           de unde provine codul și ce s-a modificat
+hardware/               fișierele modelului de pe Printables: STL, STEP, Fusion 360, lista de piese (PDF)
 docs/                   ghidul de construcție, pas cu pas (în română)
 .github/workflows/      compilare automată a firmware-ului la fiecare push
 ```
@@ -57,6 +58,6 @@ docs/                   ghidul de construcție, pas cu pas (în română)
 - Firmware: © Marc Vasterling, Marc Wetzel, Clemens Gruber, Marc Junker, Andreas Holzhammer,
   Johannes Kuder, Jeremias Bruker, Joshua Schumacher – [hiveeyes/hanimandl](https://github.com/hiveeyes/hanimandl), **GPLv3** (vezi [LICENSE](LICENSE)).
 - Modelul 3D (carcase, cântar, angrenaj robinet): *rallef80* – [Printables #524971](https://www.printables.com/model/524971-filling-machine-hanimandl), **GPLv3**.
-  Fișierele STL / Fusion 360 nu sunt copiate aici; descarcă-le de pe Printables.
+  Fișierele originale (STL, STEP, Fusion 360, lista de piese) sunt în [`hardware/`](hardware/).
 - Comunitate: [forumul Hiveeyes (DE)](https://community.hiveeyes.org/t/hanimandl-halbautomatischer-honig-abfull-roboter/768),
   [documentația HaniMandl](https://hanimandl.readthedocs.io/).
