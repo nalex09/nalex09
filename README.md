@@ -26,6 +26,8 @@ Mașina are trei module, legate prin cabluri:
 
 ## Pașii de implementare
 
+📄 **Ghidul complet de printat / citit pe telefon: [HaniMandl-ghid.pdf](HaniMandl-ghid.pdf)** (9 pagini: plan, listă de cumpărături, piese, cablaj, meniuri, probleme).
+
 👉 **Începe aici: [docs/00-plan-de-lucru.md](docs/00-plan-de-lucru.md)** – ordinea de lucru, pas cu pas, cu bife.
 
 | # | Etapă | Document |

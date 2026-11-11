@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<title>HaniMandl – Ghid de construcție</title>
+<style>
+  @page { size: A4; margin: 14mm 14mm 16mm 14mm; }
+  :root {
+    --ink: #1d1d1f; --muted: #5b5b63; --line: #e2dccd;
+    --honey: #e8a317; --honey-dark: #9a6400; --honey-bg: #fff6e0;
+    --ok: #2e7d32; --ok-bg: #edf7ee; --warn: #b3261e; --warn-bg: #fdecea;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family: "Inter", "DejaVu Sans", sans-serif; color: var(--ink); font-size: 10.2pt; line-height: 1.45; margin: 0; }
+  h1, h2, h3 { font-family: "Inter Display", "Inter", sans-serif; line-height: 1.15; margin: 0; }
+  h2 { font-size: 17pt; margin: 0 0 3mm; padding-bottom: 2mm; border-bottom: 2.5px solid var(--honey); }
+  h3 { font-size: 11.5pt; margin: 4mm 0 1.5mm; }
+  p { margin: 0 0 2mm; }
+  a { color: var(--honey-dark); text-decoration: none; }
+  code { font-family: "JetBrains Mono", monospace; font-size: 8.8pt; background: #f3f1ec; padding: 0 1.2mm; border-radius: 1mm; }
+  .page-break { break-before: page; }
+  .muted { color: var(--muted); }
+  .small { font-size: 8.8pt; }
+
+  /* cover */
+  .cover { height: 262mm; display: flex; flex-direction: column; }
+  .cover-band { background: var(--honey); color: #fff; border-radius: 4mm; padding: 12mm 12mm 10mm; }
+  .cover-band .kicker { font-size: 10pt; letter-spacing: .12em; text-transform: uppercase; opacity: .9; }
+  .cover-band h1 { font-size: 34pt; margin: 3mm 0 2mm; font-weight: 800; }
+  .cover-band .sub { font-size: 13pt; max-width: 150mm; }
+  .modules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin: 8mm 0; }
+  .module { border: 1.5px solid var(--line); border-radius: 3mm; padding: 4mm; }
+  .module .n { display: inline-block; width: 7mm; height: 7mm; border-radius: 50%; background: var(--honey); color: #fff; text-align: center; line-height: 7mm; font-weight: 700; margin-bottom: 2mm; }
+  .module b { display: block; font-size: 11pt; margin-bottom: 1mm; }
+  .roadmap { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2.5mm; margin-top: 2mm; }
+  .roadmap div { background: var(--honey-bg); border-radius: 2.5mm; padding: 2.5mm 3mm; font-size: 8.8pt; }
+  .roadmap div b { display: block; color: var(--honey-dark); font-size: 13pt; }
+  .cover-foot { margin-top: auto; font-size: 8.6pt; color: var(--muted); border-top: 1px solid var(--line); padding-top: 3mm; }
+  .howto { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; margin-top: 6mm; }
+  .howto div { border-left: 3px solid var(--honey); padding: 1mm 0 1mm 3mm; font-size: 9.4pt; }
+
+  /* stages */
+  .stage { border: 1.5px solid var(--line); border-radius: 3mm; padding: 3.5mm 4.5mm 3mm; margin-bottom: 4mm; break-inside: avoid; }
+  .stage-head { display: flex; align-items: baseline; gap: 3mm; margin-bottom: 2mm; }
+  .stage-num { flex: none; width: 9mm; height: 9mm; border-radius: 50%; background: var(--honey); color: #fff; font-weight: 800; font-size: 12pt; text-align: center; line-height: 9mm; align-self: center; }
+  .stage-title { font-family: "Inter Display", "Inter", sans-serif; font-weight: 700; font-size: 12.5pt; flex: 1; }
+  .stage-time { font-size: 8.6pt; color: var(--honey-dark); background: var(--honey-bg); border-radius: 10mm; padding: .6mm 2.5mm; white-space: nowrap; align-self: center; }
+  ul.check { list-style: none; padding: 0; margin: 0 0 2mm; }
+  ul.check li { position: relative; padding-left: 7mm; margin-bottom: 1.3mm; }
+  ul.check li::before { content: ""; position: absolute; left: 0; top: .6mm; width: 3.8mm; height: 3.8mm; border: 1.4px solid #8a8577; border-radius: .8mm; background: #fff; }
+  ul.check li ul { list-style: disc; padding-left: 5mm; margin: .8mm 0 0; }
+  .done { background: var(--ok-bg); border-radius: 2mm; padding: 1.8mm 3mm; font-size: 9.3pt; }
+  .done b { color: var(--ok); }
+  .warn { background: var(--warn-bg); border-radius: 2mm; padding: 1.8mm 3mm; font-size: 9.3pt; margin-bottom: 2mm; }
+  .warn b { color: var(--warn); }
+  .tip { background: var(--honey-bg); border-radius: 2mm; padding: 1.8mm 3mm; font-size: 9.3pt; margin-bottom: 2mm; }
+
+  /* tables */
+  table { width: 100%; border-collapse: collapse; font-size: 9pt; margin-bottom: 3mm; }
+  th { text-align: left; background: #f6f2e8; font-weight: 600; padding: 1.6mm 2mm; border-bottom: 1.5px solid var(--line); }
+  td { padding: 1.4mm 2mm; border-bottom: 1px solid #eee8da; vertical-align: top; }
+  tr { break-inside: avoid; }
+  td.box { width: 6mm; }
+  td.box span { display: inline-block; width: 3.6mm; height: 3.6mm; border: 1.3px solid #8a8577; border-radius: .7mm; }
+  .pin { font-family: "JetBrains Mono", monospace; font-weight: 700; white-space: nowrap; }
+  .tag { display: inline-block; font-size: 7.8pt; font-weight: 600; border-radius: 1mm; padding: 0 1.4mm; }
+  .tag.v3 { background: #fff1d6; color: #9a6400; }
+  .tag.v5 { background: #fde2e1; color: #b3261e; }
+  .tag.g { background: #e7e7e7; color: #333; }
+  .diagram { border: 1px solid var(--line); border-radius: 3mm; padding: 2mm; margin-bottom: 3mm; }
+  .diagram svg { width: 100%; height: auto; display: block; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+</style>
+</head>
+<body>
+
+<!-- ======================= COPERTA ======================= -->
+<section class="cover">
+  <div class="cover-band">
+    <div class="kicker">Ghid de construcție · pas cu pas</div>
+    <h1>HaniMandl 🍯</h1>
+    <div class="sub">Mașină semi-automată de îmbuteliat miere: umple borcane la gram, acționând robinetul maturatorului cu un servomotor prin roți dințate.</div>
+  </div>
+
+  <div class="modules">
+    <div class="module"><span class="n">1</span><b>Unitatea de control</b>Placa Heltec WiFi Kit 32 V3 cu ecran, encoder, buton verde (START), buton roșu (STOP), comutator Automat / Manual / Setup.</div>
+    <div class="module"><span class="n">2</span><b>Cântarul</b>Celulă de sarcină <b style="display:inline">2 kg</b> + modul HX711, sub robinet. Cântărește borcanul în timp ce se umple.</div>
+    <div class="module"><span class="n">3</span><b>Mecanismul robinetului</b>Servo 20 kg montat pe robinetul Imgut. Roata de pe servo învârte brațul cu sector dințat.</div>
+  </div>
+
+  <h3>Drumul complet</h3>
+  <div class="roadmap">
+    <div><b>0</b>Verifici robinetul</div>
+    <div><b>1</b>Comanzi piesele</div>
+    <div><b>2</b>Printezi 3D</div>
+    <div><b>3</b>Încarci firmware</div>
+    <div><b>4</b>Test pe masă</div>
+    <div><b>5</b>Cântarul</div>
+    <div><b>6</b>Unitatea de control</div>
+    <div><b>7</b>Robinetul</div>
+    <div><b>8</b>Configurare</div>
+    <div><b>9</b>Probe 🍯</div>
+  </div>
+
+  <div class="howto">
+    <div><b>Cum folosești ghidul:</b> bifează fiecare pătrățel când e făcut. La final de etapă e o casetă verde <b>„Gata când”</b> – nu trece mai departe până nu e adevărată.</div>
+    <div><b>Timp total:</b> 2–3 weekenduri de lucru efectiv, plus așteptarea coletelor. Printarea merge în paralel cu așteptarea.</div>
+  </div>
+
+  <div class="cover-foot">
+    Model 3D: <b>rallef80</b> – printables.com/model/524971 (GPLv3) · Firmware: <b>HaniMandl v0.2.13</b> – github.com/hiveeyes/hanimandl (GPLv3)<br>
+    Toate fișierele (STL, firmware, documentație completă): repository-ul GitHub <b>nalex09/nalex09</b>, folderele <code>hardware/</code>, <code>firmware/</code>, <code>docs/</code>.
+  </div>
+</section>
+
+<!-- ======================= PLAN ======================= -->
+<section class="page-break">
+  <h2>Planul de lucru</h2>
+
+  <div class="stage">
+    <div class="stage-head"><span class="stage-num">0</span><span class="stage-title">Verificări înainte de a cumpăra</span><span class="stage-time">1 oră</span></div>
+    <ul class="check">
+      <li>Uită-te la robinetul maturatorului. Modelul e făcut pentru <b>robinetul de plastic Imgut</b> („Quetschhahn”). Măsoară corpul robinetului: suportul servo are un arc de <b>~54,5 mm</b>.</li>
+      <li>Dacă ai imprimantă: printează <b>doar</b> <code>servo-mounting-plate.stl</code> (~2–3 ore) și probează-l pe robinet.</li>
+      <li>Verifică uneltele (lista e la Etapa 1).</li>
+    </ul>
+    <div class="tip">Robinet diferit? Cel mai simplu: cumperi un robinet Imgut (~10 €). Altfel trebuie modificate piesele în Fusion 360.</div>
+    <div class="done"><b>Gata când:</b> știi sigur că suportul se potrivește pe robinet (sau ai decis să iei robinetul Imgut).</div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-head"><span class="stage-num">1</span><span class="stage-title">Comanzi componentele</span><span class="stage-time">30 min + așteptare</span></div>
+    <ul class="check">
+      <li>Toate piesele din <b>Anexa A – Lista de cumpărături</b> (pagina 5).</li>
+      <li>Unelte: ciocan de lipit + fludor, multimetru, șurubelnițe, clește de dezizolat, superglue, fire Dupont mamă-mamă pentru teste.</li>
+      <li>O greutate cunoscută pentru calibrare (ex. 1 kg zahăr nedeschis, cântărit pe un cântar bun).</li>
+    </ul>
+    <div class="done"><b>Gata când:</b> totul e comandat.</div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-head"><span class="stage-num">2</span><span class="stage-title">Printezi piesele 3D (cât aștepți coletele)</span><span class="stage-time">15–20 h imprimantă</span></div>
+    <p class="small muted">Orientare și setări: Anexa B. PLA, ~250–300 g. Ordinea:</p>
+    <ul class="check">
+      <li><code>servo-mounting-plate</code> (dacă nu l-ai printat la Etapa 0)</li>
+      <li><code>gear-on-servo</code> și <code>gear-arm</code> – solide, strat fin 0,12–0,16 mm</li>
+      <li><code>scale-ground-plate</code>, <code>scale-top-plate</code>, <code>scale-topping-plate</code></li>
+      <li><code>housing-ground-part</code>, <code>housing-upper-part</code></li>
+    </ul>
+    <div class="done"><b>Gata când:</b> ai toate cele 8 piese, cu găurile curate (dă cu un burghiu de mână dacă sunt strâmte).</div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-head"><span class="stage-num">3</span><span class="stage-title">Încarci firmware-ul pe placă</span><span class="stage-time">30 min</span></div>
+    <ul class="check">
+      <li>Conectează placa Heltec la PC cu un cablu USB-C <b>de date</b> (nimic altceva legat).</li>
+      <li>Descarcă <code>firmware/bin/hanimandl-v0.2.13-heltec-v3-factory.bin</code> din repository.</li>
+      <li>Deschide în Chrome/Edge: <b>espressif.github.io/esptool-js</b> → <i>Connect</i> → alege portul.</li>
+      <li>Flash Address <code>0x0</code>, alege fișierul, apasă <b>Program</b>. La final apasă <b>RST</b> pe placă.</li>
+    </ul>
+    <div class="tip">Nu se conectează? Ține apăsat <b>PRG</b>, apasă <b>RST</b>, eliberează PRG și încearcă din nou. Pe Windows poate trebui driverul „CP210x”.</div>
+    <div class="done"><b>Gata când:</b> pe ecran apare albina + „HANI MANDL v.0.2.13”, apoi <b>„Keine Waage!”</b> (= niciun cântar – normal, încă nu e legat).</div>
+  </div>
+</section>
+
+<section class="page-break">
+  <div class="stage">
+    <div class="stage-head"><span class="stage-num">4</span><span class="stage-title">Test pe masă – câte o componentă</span><span class="stage-time">2–3 ore</span></div>
+    <div class="warn"><b>Regulă:</b> scoate USB-ul de fiecare dată când legi ceva. Leagă o componentă → testează → abia apoi următoarea. Pinii: Anexa C.</div>
+    <ul class="check">
+      <li>Lipește pinii header pe placa Heltec (dacă nu sunt lipiți). Leagă provizoriu cu fire Dupont.</li>
+      <li><b>Comutatorul</b> (41 la mijloc, 40 și 42 la capete) → pozițiile schimbă ecranul: <i>Automatik</i> / manual / <i>Setup</i>. Inversate? Schimbă firele 40 ↔ 42.</li>
+      <li><b>Encoderul</b> (47 / 48 / 26, „+” la 3V3) → în Setup, rotirea mută selecția, apăsarea intră în meniu.</li>
+      <li><b>Butoanele</b> (START: 6 + 7, STOP: 4 + 5) → în modul manual verde afișează ▶ (pornit), roșu afișează simbolul de pauză (oprit).</li>
+      <li><b>HX711 + celula</b> (DT 39, SCK 38, VCC la <b>3V3</b>) → dispare „Keine Waage!”. Apasă ușor pe capătul liber al celulei: numărul crește. Scade? Inversează A+ cu A−.</li>
+      <li><b>Servo-ul</b> (semnal 33; + și − din sursa de <b>5 V</b>; GND comun) – <b>fără nimic pe ax</b>, alimentat din sursă (fără USB). Manual → verde → rotești encoderul → servo-ul se mișcă.</li>
+      <li>Opțional: buzzer (pin 2) și Setup → Parameter → <i>Buzzer ein</i>.</li>
+    </ul>
+    <div class="done"><b>Gata când:</b> toate componentele răspund corect și placa nu se resetează când se mișcă servo-ul.</div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-head"><span class="stage-num">5</span><span class="stage-title">Asamblezi și calibrezi cântarul</span><span class="stage-time">1 oră</span></div>
+    <ul class="check">
+      <li>Celula pe bază (<code>scale-ground-plate</code>) cu <b>2 × M5×20</b> cap înecat; platforma (<code>scale-top-plate</code>) pe celulă cu <b>2 × M4×20</b>. HX711 în bază.</li>
+      <li>Săgeata de pe celulă în jos. Platforma <b>nu are voie să atingă</b> baza – trece o foaie de hârtie prin jur.</li>
+      <li>Pornește, așteaptă 3 minute (se încălzește), apoi <b>Setup → Kalibrieren</b>: golește cântarul → OK → rotește encoderul la greutatea ta (ex. 1000 g) → pune-o → OK.</li>
+      <li>Verifică în modul manual cu 2–3 obiecte cântărite pe alt cântar.</li>
+      <li>Pune capacul <code>scale-topping-plate</code> deasupra.</li>
+    </ul>
+    <div class="done"><b>Gata când:</b> cântarul arată corect (± 1–2 g) și revine la 0 când îl golești.</div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-head"><span class="stage-num">6</span><span class="stage-title">Montezi unitatea de control</span><span class="stage-time">2–4 ore</span></div>
+    <ul class="check">
+      <li>În capac: encoderul (Ø7,4), cele 2 butoane (Ø12,5), comutatorul rotund (Ø20,5).</li>
+      <li>Placa Heltec în locaș, prinsă cu superglue (nimic pe butoanele PRG/RST sau pe mufa USB).</li>
+      <li>Înlocuiește firele Dupont cu fire lipite; izolează fiecare lipitură cu termocontractabil.</li>
+      <li>În cutie: mufa DC (Ø8,2); cablurile spre cântar și servo prin cele 2 găuri Ø6 – fă un nod pe interior.</li>
+      <li><b>Refă testul de la Etapa 4</b> înainte să închizi. Apoi îmbină capacul cu cutia (prin presare).</li>
+    </ul>
+    <div class="done"><b>Gata când:</b> totul funcționează cu cutia închisă, alimentat din sursa de 5 V.</div>
+  </div>
+</section>
+
+<section class="page-break">
+  <div class="stage">
+    <div class="stage-head"><span class="stage-num">7</span><span class="stage-title">Mecanismul robinetului</span><span class="stage-time">1–2 ore</span></div>
+    <div class="warn"><b>Maturatorul gol!</b> Pui roata pe servo <b>abia după</b> ce servo-ul s-a dus singur în poziția „închis” – altfel poate forța robinetul și rupe piesele.</div>
+    <ul class="check">
+      <li>Suportul <code>servo-mounting-plate</code> pe robinet; servo-ul în suport cu <b>2 × M3×20</b> + piulițe + șaibe.</li>
+      <li>Roata <code>gear-on-servo</code> pe discul metalic 25T cu <b>5 × M3×15</b> + șaibe. <b>Discul încă NU pe servo.</b></li>
+      <li>Brațul <code>gear-arm</code> pe robinet cu <b>M3×30</b> + piuliță și <b>M6×50</b> (axul – verifică poziția în proiectul Fusion).</li>
+      <li>Pornește electronica → servo-ul merge în „închis”.</li>
+      <li>Închide robinetul de mână (strâns, ca de obicei). Pune discul cu roata pe ax ca dinții să se prindă de braț. Strânge șurubul central.</li>
+      <li>Mod manual → verde → rotește <b>încet</b> encoderul: robinetul trebuie să se <b>deschidă</b>.</li>
+      <li>Notează valoarea <code>W=</code> de pe ecran pentru: închis etanș → <b>Minimum</b>; fir subțire → <b>Feindos.</b>; deschis complet → <b>Maximum</b>.</li>
+      <li><b>Setup → Servoeinst.</b> → introdu cele 3 valori → <i>Speichern</i>.</li>
+    </ul>
+    <div class="done"><b>Gata când:</b> robinetul se închide etanș și se deschide complet, fără ca servo-ul să bâzâie sau să forțeze în capete.</div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-head"><span class="stage-num">8</span><span class="stage-title">Configurezi umplerea</span><span class="stage-time">30 min</span></div>
+    <ul class="check">
+      <li><b>Setup → Füllmenge</b>: cantitățile tale (ex. 250 g, 500 g, 1000 g).</li>
+      <li><b>Setup → Tarawerte</b>: pentru fiecare cantitate pune borcanul gol → OK. <b>Obligatoriu</b> – fără tară, modul Automat nu pornește.</li>
+      <li><b>Setup → Korrektur</b>: începe cu <code>-5</code>.</li>
+      <li><b>Setup → Automatik</b>: Autostart <i>aus</i> (oprit) deocamdată.</li>
+    </ul>
+    <div class="done"><b>Gata când:</b> la Tarawerte nu mai apare „fehlt” (lipsește) la nicio cantitate.</div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-head"><span class="stage-num">9</span><span class="stage-title">Probe – întâi apă, apoi miere</span><span class="stage-time">o seară</span></div>
+    <ul class="check">
+      <li>Apă în maturator. Comutator pe <b>Automatik</b>, borcan gol pe cântar, apasă <b>verde</b> → se umple și se oprește.</li>
+      <li>Cântărește borcanul pe alt cântar. Prea plin → Korrektur mai negativ. Prea gol → mai mare.</li>
+      <li>Repetă până iese corect de 3 ori la rând.</li>
+      <li>Treci la <b>miere</b> (caldă, sub 40 °C): reglează din nou Korrektur și Feindos. – mierea e mult mai vâscoasă.</li>
+      <li>Când ești mulțumit: Setup → Automatik → <b>Autostart ein</b>, <b>Autokorr. ein</b>, Kulanz 2–5 g.</li>
+    </ul>
+    <div class="done"><b>Gata când:</b> umpli 10 borcane la rând fără să intervii, toate la greutatea dorită sau puțin peste. 🍯</div>
+  </div>
+</section>
+
+<!-- ======================= ANEXA A ======================= -->
+<section class="page-break">
+  <h2>Anexa A – Lista de cumpărături</h2>
+  <p class="small muted">După lista autorului (total ≈ 77 €, prețuri 2023), cu celula de 2 kg în loc de 1 kg.</p>
+  <table>
+    <tr><th></th><th>Componentă</th><th>Buc.</th><th>Atenție la</th></tr>
+    <tr><td class="box"><span></span></td><td><b>Heltec WiFi Kit 32 V3</b> (ESP32-S3 cu OLED 0,96")</td><td>1</td><td><b>V3</b> și varianta <b>WiFi, nu LoRa</b></td></tr>
+    <tr><td class="box"><span></span></td><td><b>Celulă de sarcină 2 kg + HX711</b></td><td>1</td><td>format <b>80 × 12,7 × 12,7 mm</b>, filete <b>M4 + M5</b></td></tr>
+    <tr><td class="box"><span></span></td><td><b>Servo digital 20 kg, 270°</b> (ex. Miuzei)</td><td>1</td><td>format standard</td></tr>
+    <tr><td class="box"><span></span></td><td><b>Disc metalic pentru servo 25T</b></td><td>1</td><td>canelura <b>25T</b></td></tr>
+    <tr><td class="box"><span></span></td><td><b>Encoder rotativ KY-040</b></td><td>1</td><td>ax cu filet 7 mm</td></tr>
+    <tr><td class="box"><span></span></td><td><b>Buton 12 mm</b> impermeabil, cu revenire (verde + roșu)</td><td>2</td><td><i>momentary</i>, normal deschis</td></tr>
+    <tr><td class="box"><span></span></td><td><b>Comutator basculant rotund Ø20 mm</b></td><td>1</td><td><b>3 poziții ON-OFF-ON</b></td></tr>
+    <tr><td class="box"><span></span></td><td><b>Mufă DC mamă de panou 5,5 × 2,1 mm</b></td><td>1</td><td></td></tr>
+    <tr><td class="box"><span></span></td><td><b>Sursă 5 V / 3 A</b>, mufă 5,5 × 2,1 mm</td><td>1</td><td>minim 3 A</td></tr>
+    <tr><td class="box"><span></span></td><td><b>Robinet de plastic Imgut</b> („Quetschhahn”)</td><td>1</td><td>dacă al tău e diferit (Etapa 0)</td></tr>
+    <tr><td class="box"><span></span></td><td>Șurub M6 × 50</td><td>1</td><td>axul brațului</td></tr>
+    <tr><td class="box"><span></span></td><td>Șurub M5 × 20 <b>cap înecat</b></td><td>2</td><td>celulă ↔ bază</td></tr>
+    <tr><td class="box"><span></span></td><td>Șurub M4 × 20 <b>cap înecat</b></td><td>2</td><td>celulă ↔ platformă</td></tr>
+    <tr><td class="box"><span></span></td><td>Set M3 inox: 1 × M3×30, 2 × M3×20, 5 × M3×15 + piulițe + șaibe</td><td>1 set</td><td></td></tr>
+    <tr><td class="box"><span></span></td><td>Filament PLA</td><td>~300 g</td><td></td></tr>
+    <tr><td class="box"><span></span></td><td>Fire 0,25 mm², termocontractabil, fire Dupont mamă-mamă, cablu USB-C de date</td><td>–</td><td></td></tr>
+    <tr><td class="box"><span></span></td><td><span class="muted">Opțional:</span> buzzer <b>activ</b> 3–5 V</td><td>1</td><td>activ, nu pasiv</td></tr>
+    <tr><td class="box"><span></span></td><td><span class="muted">Opțional:</span> condensator 1000 µF / 10 V</td><td>1</td><td>la servo, contra resetărilor</td></tr>
+  </table>
+  <div class="tip">Caută în magazine (eMAG, Optimus Digital, Sigmanortec, AliExpress) după: „Heltec WiFi Kit 32 V3”, „celula de sarcina 2kg HX711”, „servo 20kg 270 grade”, „disc metalic servo 25T”, „KY-040”, „buton 12mm impermeabil”, „comutator basculant rotund 20mm ON-OFF-ON”.</div>
+
+  </section>
+<section class="page-break">
+  <h2>Anexa B – Piese printate și șuruburi</h2>
+  <table>
+    <tr><th>Fișier (folder <code>hardware/stl/</code>)</th><th>Mărime (mm)</th><th>Pe masă</th><th>Setări</th><th>Șuruburi</th></tr>
+    <tr><td><code>servo-mounting-plate</code></td><td>159 × 98 × 12</td><td><b>culcă</b> pe fața mare</td><td>5 pereți, 50 %</td><td>2 × M3×20 (servo)</td></tr>
+    <tr><td><code>gear-on-servo</code></td><td>46 × 46 × 15</td><td>așa cum e</td><td>5 pereți, 60–100 %, strat fin</td><td>5 × M3×15 (pe disc)</td></tr>
+    <tr><td><code>gear-arm</code></td><td>168 × 63 × 19</td><td>așa cum e</td><td>5 pereți, 50–100 %, strat fin</td><td>M3×30, M6×50</td></tr>
+    <tr><td><code>scale-ground-plate</code></td><td>94 × 94 × 21</td><td><b>întoarce</b> (fața plată jos)</td><td>4 pereți, 30 %</td><td>2 × M5×20</td></tr>
+    <tr><td><code>scale-top-plate</code></td><td>104 × 104 × 12</td><td><b>întoarce</b></td><td>4 pereți, 30 %</td><td>2 × M4×20</td></tr>
+    <tr><td><code>scale-topping-plate</code></td><td>110 × 110 × 13</td><td><b>întoarce</b></td><td>3 pereți, 15 %</td><td>–</td></tr>
+    <tr><td><code>housing-ground-part</code></td><td>130 × 88 × 31</td><td>așa cum e</td><td>3 pereți, 15–20 %</td><td>–</td></tr>
+    <tr><td><code>housing-upper-part</code></td><td>130 × 88 × 25</td><td><b>întoarce</b> (fața capacului jos)</td><td>3 pereți, 15–20 %</td><td>– (Heltec cu superglue)</td></tr>
+  </table>
+  <p class="small muted">Strat 0,2 mm (0,12–0,16 mm la roțile dințate), fără suporturi în aceste orientări. „Întoarce” = în slicer, <i>Place on face</i> (PrusaSlicer: tasta F) / <i>Lay flat</i> (Cura).</p>
+</section>
+
+<!-- ======================= ANEXA B ======================= -->
+<section class="page-break">
+  <h2>Anexa C – Cablaj Heltec WiFi Kit 32 V3</h2>
+  <div class="diagram">__SVG__</div>
+  <div class="two">
+    <table>
+      <tr><th>Componentă</th><th>Pin</th><th>→ Heltec</th></tr>
+      <tr><td>Sursă 5 V</td><td>+ / −</td><td class="pin">5V / GND</td></tr>
+      <tr><td>Servo</td><td>semnal</td><td class="pin">33</td></tr>
+      <tr><td></td><td>+ / −</td><td><span class="tag v5">5 V din sursă</span> / <span class="pin">GND</span></td></tr>
+      <tr><td>HX711</td><td>DT / SCK</td><td class="pin">39 / 38</td></tr>
+      <tr><td></td><td>VCC / GND</td><td><span class="tag v3">3V3</span> / <span class="pin">GND</span></td></tr>
+      <tr><td>Celulă → HX711</td><td colspan="2">roșu E+ · negru E− · alb A− · verde A+</td></tr>
+    </table>
+    <table>
+      <tr><th>Componentă</th><th>Pin</th><th>→ Heltec</th></tr>
+      <tr><td>Encoder</td><td>CLK / DT / SW</td><td class="pin">47 / 48 / 26</td></tr>
+      <tr><td></td><td>+ / GND</td><td><span class="tag v3">3V3</span> / <span class="pin">GND</span></td></tr>
+      <tr><td>Comutator</td><td>mijloc / capete</td><td class="pin">41 / 40, 42</td></tr>
+      <tr><td>START (verde)</td><td>contacte</td><td class="pin">7 + 6</td></tr>
+      <tr><td>STOP (roșu)</td><td>contacte</td><td class="pin">5 + 4</td></tr>
+      <tr><td>Buzzer activ</td><td>+ / −</td><td class="pin">2 / GND</td></tr>
+    </table>
+  </div>
+  <div class="warn"><b>Important:</b> HX711 și encoderul la <b>3V3, nu la 5 V</b>. Servo-ul direct din sursa de 5 V, cu <b>GND comun</b> cu placa. <b>Nu</b> conecta USB-ul și sursa externă în același timp. Butoanele și comutatorul <b>nu au nevoie de rezistențe</b>.</div>
+</section>
+
+<!-- ======================= ANEXA D ======================= -->
+<section class="page-break">
+  <h2>Anexa D – Comenzi și meniuri (germană → română)</h2>
+  <div class="two">
+    <div>
+      <h3>Comenzi</h3>
+      <table>
+        <tr><td><b>Comutator</b></td><td>Automatik · mijloc = Manual · Setup</td></tr>
+        <tr><td><b>Encoder – rotire</b></td><td>navigare / valoare / deschidere robinet</td></tr>
+        <tr><td><b>Encoder – apăsare</b></td><td>OK; în Manual = tara</td></tr>
+        <tr><td><b>Verde</b></td><td>START – pornește servo / umplerea</td></tr>
+        <tr><td><b>Roșu</b></td><td>STOP – închide robinetul imediat; iese din submeniu</td></tr>
+      </table>
+      <h3>Meniul Setup</h3>
+      <table>
+        <tr><td><b>Tarawerte</b></td><td>tara fiecărui borcan gol</td></tr>
+        <tr><td><b>Kalibrieren</b></td><td>calibrarea cântarului</td></tr>
+        <tr><td><b>Korrektur</b></td><td>corecție (−90…+20 g)</td></tr>
+        <tr><td><b>Füllmenge</b></td><td>cantitățile (5 borcane)</td></tr>
+        <tr><td><b>Automatik</b></td><td>Autostart, Glastol., Autokorr., Kulanz</td></tr>
+        <tr><td><b>Servoeinst.</b></td><td>Livesetup, Minimum, Feindos., Maximum</td></tr>
+        <tr><td><b>Parameter</b></td><td>Buzzer ein/aus, tip meniu</td></tr>
+        <tr><td><b>Zählwerk / Trip</b></td><td>contor total / parțial</td></tr>
+        <tr><td><b>Clear Prefs</b></td><td>șterge TOATE setările</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>Mesaje pe ecran</h3>
+      <table>
+        <tr><td><b>Keine Waage!</b></td><td>niciun cântar detectat</td></tr>
+        <tr><td><b>Nicht kalibr.</b></td><td>cântar necalibrat</td></tr>
+        <tr><td><b>Waage leeren!</b></td><td>golește cântarul</td></tr>
+        <tr><td><b>Bitte … aufstellen</b></td><td>pune … pe cântar</td></tr>
+        <tr><td><b>und mit OK bestätigen</b></td><td>și confirmă cu OK</td></tr>
+        <tr><td><b>Handbetrieb</b></td><td>mod manual</td></tr>
+        <tr><td><b>Speichern / Abbrechen</b></td><td>salvează / anulează</td></tr>
+        <tr><td><b>Zurück!</b></td><td>înapoi</td></tr>
+        <tr><td><b>ein / aus</b></td><td>pornit / oprit</td></tr>
+        <tr><td><b>fehlt</b></td><td>lipsește</td></tr>
+        <tr><td><b>Feindos.</b></td><td>dozare fină</td></tr>
+        <tr><td><b>Kulanz</b></td><td>surplus voit (grame în plus)</td></tr>
+        <tr><td><b>Glastol.</b></td><td>toleranța borcanului gol</td></tr>
+        <tr><td><b>W=</b></td><td>unghiul servo-ului</td></tr>
+        <tr><td><b>k= / ak=</b></td><td>corecție / autocorecție</td></tr>
+        <tr><td><b>AS</b></td><td>Autostart activ</td></tr>
+        <tr><td><b>START</b></td><td>borcan detectat, pornește</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h2 style="margin-top:5mm">Anexa E – Probleme frecvente</h2>
+  <table>
+    <tr><th>Simptom</th><th>Rezolvare</th></tr>
+    <tr><td>Ecran negru</td><td>Firmware pentru altă placă. Folosește binarul pentru <b>V3</b> din repository.</td></tr>
+    <tr><td>„Keine Waage!”</td><td>Verifică HX711: VCC la 3V3, DT pe 39, SCK pe 38 (des inversate).</td></tr>
+    <tr><td>Greutatea scade când apeși</td><td>Inversează A+ cu A− la HX711, apoi recalibrează.</td></tr>
+    <tr><td>Greutatea „plutește”</td><td>Platforma atinge baza / cablu tras / lipsește încălzirea de 3 min.</td></tr>
+    <tr><td>Placa se resetează la mișcarea servo-ului</td><td>Sursă ≥ 3 A, GND comun, condensator 1000 µF la servo.</td></tr>
+    <tr><td>Robinetul se închide când ar trebui să se deschidă</td><td>Folosește firmware-ul din acest repository (are inversarea pentru roți dințate activă).</td></tr>
+    <tr><td>Encoderul sare câte 2 sau merge invers</td><td>Alt tip de encoder / inversează firele 47 ↔ 48.</td></tr>
+    <tr><td>Verdele nu pornește automatul</td><td>Lipsește tara pentru cantitatea aleasă (Setup → Tarawerte).</td></tr>
+    <tr><td>Borcane prea pline</td><td>Korrektur mai negativ, Feindos. mai mic sau Autokorr. ein.</td></tr>
+  </table>
+</section>
+
+</body>
+</html>
