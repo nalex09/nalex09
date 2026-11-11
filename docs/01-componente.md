@@ -12,7 +12,7 @@ deci e bine să le iei pe acestea sau unele cu **aceleași dimensiuni**. Total �
 | 2 | **Encoder rotativ KY-040** | 1 | Se vinde la set de 5. Filet ax 7 mm (gaura din capac Ø7,4). |
 | 3 | **Servo digital 20 kg, 270°** (Miuzei) | 1 | Format standard. Vezi nota despre 270° mai jos. |
 | 4 | **Disc metalic pentru servo, 25T** (diymore) | 1 | Roata dințată printată se înșurubează pe el. Trebuie să fie **25T** (canelura servo-ului de 20 kg). |
-| 5 | **Celulă de sarcină 1 kg + modul HX711** | 1 | Bară standard ~80 × 12,7 × 12,7 mm cu filete M4 și M5. |
+| 5 | **Celulă de sarcină 2 kg + modul HX711** | 1 | ✅ *Ales: 2 kg* (autorul a folosit 1 kg). Trebuie să fie bara standard **80 × 12,7 × 12,7 mm** cu filete **M4 + M5** – cântarul printat e făcut pe acest format. |
 | 6 | **Buton 12 mm, impermeabil**, cu revenire | 2 | Unul verde (START), unul roșu (STOP). Gaura din capac: Ø12,5. Trebuie să fie *momentary* (cu revenire), contact normal deschis. |
 | 7 | **Comutator basculant rotund Ø20 mm** | 1 | Trebuie să fie cu **3 poziții (ON-OFF-ON)**. Gaura din capac: Ø20,5. |
 | 8 | **Mufă DC mamă 5,5 × 2,1 mm** pentru panou | 1 | Gaura din cutie: Ø8,2. |
@@ -35,11 +35,18 @@ contează, pentru că valorile Minimum / Feindos. / Maximum se reglează oricum 
 ([06-calibrare-utilizare.md](06-calibrare-utilizare.md)). Cu angrenajul cu roți dințate, cursa mare
 permite deschiderea completă a robinetului.
 
-### Despre celula de 1 kg
+### Despre celula de 2 kg
 
-Cântarul trebuie să ducă borcanul **plin**. Un borcan de 500 g cântărește plin ≈ 700–800 g, deci 1 kg
-ajunge pentru borcane de până la 500 g. Pentru borcane de 1 kg ia o celulă de **2 kg** în același format
-(de obicei aceleași dimensiuni și filete) și mărește `MAXIMALGEWICHT` în firmware.
+Cântarul trebuie să ducă borcanul **plin**. Un borcan de 500 g cântărește plin ≈ 700–800 g, unul de
+1 kg ≈ 1,3–1,5 kg. Celula de **2 kg** acoperă ambele cazuri (cea de 1 kg a autorului ajunge doar
+până la borcane de 500 g). Rezoluția rămâne mult sub 1 g cu HX711, deci precizia nu are de suferit.
+
+- Firmware-ul **nu trebuie modificat**: `MAXIMALGEWICHT 1000` permite deja cantități de până la 1000 g.
+- **Înainte de comandă** verifică în descrierea produsului: dimensiuni **80 × 12,7 × 12,7 mm**,
+  găuri filetate **M4** la un capăt și **M5** la celălalt. Majoritatea celulelor de 1/2/3/5 kg au exact
+  acest format; unele de 2 kg sunt mai mici (ex. 75 mm) și nu se potrivesc în baza printată.
+- După montaj se face calibrarea normal ([06-calibrare-utilizare.md](06-calibrare-utilizare.md)), de
+  preferat cu o greutate mai mare (ex. 1000 g).
 
 ## Mecanică
 
@@ -62,6 +69,6 @@ Autorul recomandă un set de șuruburi M3 inox cu piulițe (570 buc.) – mai ie
 
 Componentele electronice sunt standard (eMAG, Optimus Digital, Sigmanortec, AliExpress etc.). Caută după:
 „Heltec WiFi Kit 32 V3”, „KY-040”, „servo 20kg 270 grade”, „disc metalic servo 25T”,
-„celula de sarcina 1kg HX711”, „buton 12mm impermeabil”, „comutator basculant rotund 20mm ON-OFF-ON”.
+„celula de sarcina 2kg HX711”, „buton 12mm impermeabil”, „comutator basculant rotund 20mm ON-OFF-ON”.
 Robinetul Imgut se găsește la magazinele germane de apicultură (ex. Holtermann – link în PDF);
 verifică dacă robinetul maturatorului tău are aceeași formă înainte să printezi.

@@ -26,6 +26,8 @@ Mașina are trei module, legate prin cabluri:
 
 ## Pașii de implementare
 
+👉 **Începe aici: [docs/00-plan-de-lucru.md](docs/00-plan-de-lucru.md)** – ordinea de lucru, pas cu pas, cu bife.
+
 | # | Etapă | Document |
 |---|-------|----------|
 | 1 | Cumpără componentele | [docs/01-componente.md](docs/01-componente.md) |
