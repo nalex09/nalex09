@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 720" width="1000" height="720" font-family="Helvetica, Arial, sans-serif" font-size="12">
+  <title>HaniMandl – cablaj Heltec WiFi Kit 32 V3</title>
+  <rect x="0" y="0" width="1000" height="720" fill="#ffffff"/>
+
+  <text x="500" y="36" text-anchor="middle" font-size="20" font-weight="bold" fill="#222">HaniMandl – cablaj pentru Heltec WiFi Kit 32 V3</text>
+  <text x="500" y="58" text-anchor="middle" font-size="12" fill="#555">Numerele = GPIO (tipărite pe placă). „3V3”, „5V”, „GND” = se leagă la pinul cu același nume.</text>
+
+  <!-- ===================== PLACA HELTEC ===================== -->
+  <rect x="400" y="84" width="200" height="540" rx="10" fill="#f3f6fb" stroke="#333" stroke-width="2"/>
+  <text x="500" y="104" text-anchor="middle" font-weight="bold" fill="#222">Heltec WiFi Kit 32 V3</text>
+  <rect x="445" y="210" width="110" height="80" rx="4" fill="#0b2a6b" stroke="#333"/>
+  <text x="500" y="255" text-anchor="middle" fill="#ffffff">OLED</text>
+  <text x="500" y="330" text-anchor="middle" fill="#555" font-size="11">ESP32-S3</text>
+
+  <!-- header stânga (J2) -->
+  <g font-size="11" fill="#222">
+    <text x="410" y="134">GND</text>
+    <text x="410" y="162">5V</text>
+    <text x="410" y="190" fill="#999">Ve</text>
+    <text x="410" y="218" fill="#999">Ve</text>
+    <text x="410" y="246" fill="#999">44 RX</text>
+    <text x="410" y="274" fill="#999">43 TX</text>
+    <text x="410" y="302" fill="#999">RST</text>
+    <text x="410" y="330" fill="#999">0</text>
+    <text x="410" y="358" fill="#999">36</text>
+    <text x="410" y="386" fill="#999">35</text>
+    <text x="410" y="414" fill="#999">34</text>
+    <text x="410" y="442" font-weight="bold">33</text>
+    <text x="410" y="470" font-weight="bold">47</text>
+    <text x="410" y="498" font-weight="bold">48</text>
+    <text x="410" y="526" font-weight="bold">26</text>
+    <text x="410" y="554" fill="#999">21</text>
+    <text x="410" y="582" fill="#999">20</text>
+    <text x="410" y="610" fill="#999">19</text>
+  </g>
+  <!-- header dreapta (J3) -->
+  <g font-size="11" fill="#222" text-anchor="end">
+    <text x="590" y="134">GND</text>
+    <text x="590" y="162">3V3</text>
+    <text x="590" y="190" fill="#999">3V3</text>
+    <text x="590" y="218" fill="#999">37</text>
+    <text x="590" y="246" fill="#999">46</text>
+    <text x="590" y="274" fill="#999">45</text>
+    <text x="590" y="302" font-weight="bold">42</text>
+    <text x="590" y="330" font-weight="bold">41</text>
+    <text x="590" y="358" font-weight="bold">40</text>
+    <text x="590" y="386" font-weight="bold">39</text>
+    <text x="590" y="414" font-weight="bold">38</text>
+    <text x="590" y="442" fill="#999">1</text>
+    <text x="590" y="470" font-weight="bold">2</text>
+    <text x="590" y="498" fill="#999">3</text>
+    <text x="590" y="526" font-weight="bold">4</text>
+    <text x="590" y="554" font-weight="bold">5</text>
+    <text x="590" y="582" font-weight="bold">6</text>
+    <text x="590" y="610" font-weight="bold">7</text>
+  </g>
+  <!-- pini folosiți -->
+  <g fill="#333">
+    <circle cx="400" cy="130" r="4"/><circle cx="400" cy="158" r="4"/>
+    <circle cx="400" cy="438" r="4"/><circle cx="400" cy="466" r="4"/><circle cx="400" cy="494" r="4"/><circle cx="400" cy="522" r="4"/>
+    <circle cx="600" cy="130" r="4"/><circle cx="600" cy="158" r="4"/>
+    <circle cx="600" cy="298" r="4"/><circle cx="600" cy="326" r="4"/><circle cx="600" cy="354" r="4"/>
+    <circle cx="600" cy="382" r="4"/><circle cx="600" cy="410" r="4"/><circle cx="600" cy="466" r="4"/>
+    <circle cx="600" cy="522" r="4"/><circle cx="600" cy="550" r="4"/><circle cx="600" cy="578" r="4"/><circle cx="600" cy="606" r="4"/>
+  </g>
+  <!-- etichete de rețea pe placă (dreapta sus) -->
+  <line x1="600" y1="130" x2="640" y2="130" stroke="#222" stroke-width="2.5"/>
+  <text x="646" y="134" fill="#222" font-weight="bold">GND</text>
+  <line x1="600" y1="158" x2="640" y2="158" stroke="#e07000" stroke-width="2.5"/>
+  <text x="646" y="162" fill="#e07000" font-weight="bold">3V3</text>
+
+  <!-- ===================== ALIMENTARE ===================== -->
+  <rect x="60" y="110" width="190" height="70" rx="6" fill="#fff4f4" stroke="#b22" stroke-width="1.5"/>
+  <text x="155" y="136" text-anchor="middle" font-weight="bold" fill="#222">Sursă 5 V / ≥ 3 A</text>
+  <text x="155" y="154" text-anchor="middle" font-size="11" fill="#555">mufă DC</text>
+  <text x="242" y="134" text-anchor="end" font-size="11" fill="#222">−</text>
+  <text x="242" y="162" text-anchor="end" font-size="11" fill="#b22">+</text>
+  <line x1="250" y1="130" x2="400" y2="130" stroke="#222" stroke-width="3"/>
+  <line x1="250" y1="158" x2="400" y2="158" stroke="#d62728" stroke-width="3"/>
+  <text x="325" y="124" text-anchor="middle" font-size="11" fill="#222">GND</text>
+  <text x="325" y="174" text-anchor="middle" font-size="11" fill="#d62728">5V</text>
+
+  <!-- alimentare servo din sursă -->
+  <line x1="140" y1="180" x2="140" y2="395" stroke="#222" stroke-width="3"/>
+  <line x1="200" y1="180" x2="200" y2="395" stroke="#d62728" stroke-width="3"/>
+  <text x="134" y="300" text-anchor="end" font-size="11" fill="#222">GND</text>
+  <text x="206" y="300" font-size="11" fill="#d62728">5V</text>
+
+  <!-- ===================== SERVO ===================== -->
+  <rect x="100" y="395" width="150" height="55" rx="6" fill="#f2f2f2" stroke="#333" stroke-width="1.5"/>
+  <text x="175" y="418" text-anchor="middle" font-weight="bold" fill="#222">Servo (DS3218)</text>
+  <text x="134" y="386" text-anchor="end" font-size="10" fill="#555">fir maro (−)</text>
+  <text x="206" y="386" font-size="10" fill="#555">fir roșu (+)</text>
+  <text x="244" y="442" text-anchor="end" font-size="10" fill="#555">semnal</text>
+  <line x1="250" y1="438" x2="400" y2="438" stroke="#e6a700" stroke-width="3"/>
+
+  <!-- ===================== ENCODER ===================== -->
+  <rect x="100" y="456" width="150" height="140" rx="6" fill="#f2fff2" stroke="#333" stroke-width="1.5"/>
+  <text x="110" y="476" font-weight="bold" fill="#222">Encoder</text>
+  <text x="110" y="490" font-size="11" fill="#555">KY-040</text>
+  <g font-size="11" fill="#222" text-anchor="end">
+    <text x="244" y="470">CLK</text>
+    <text x="244" y="498">DT</text>
+    <text x="244" y="526">SW</text>
+    <text x="244" y="554">+</text>
+    <text x="244" y="582">GND</text>
+  </g>
+  <line x1="250" y1="466" x2="400" y2="466" stroke="#1f77b4" stroke-width="3"/>
+  <line x1="250" y1="494" x2="400" y2="494" stroke="#2ca02c" stroke-width="3"/>
+  <line x1="250" y1="522" x2="400" y2="522" stroke="#9467bd" stroke-width="3"/>
+  <line x1="250" y1="550" x2="290" y2="550" stroke="#e07000" stroke-width="2.5"/>
+  <text x="296" y="554" fill="#e07000" font-weight="bold">3V3</text>
+  <line x1="250" y1="578" x2="290" y2="578" stroke="#222" stroke-width="2.5"/>
+  <text x="296" y="582" fill="#222" font-weight="bold">GND</text>
+
+  <!-- ===================== COMUTATOR 3 POZIȚII ===================== -->
+  <rect x="700" y="282" width="140" height="86" rx="6" fill="#fffbea" stroke="#333" stroke-width="1.5"/>
+  <text x="770" y="275" text-anchor="middle" font-weight="bold" fill="#222">Comutator ON-OFF-ON</text>
+  <g font-size="11" fill="#222">
+    <text x="708" y="302">Setup</text>
+    <text x="708" y="330">comun (mijloc)</text>
+    <text x="708" y="358">Automat</text>
+  </g>
+  <text x="834" y="345" text-anchor="end" font-size="10" fill="#777">mijloc = Manual</text>
+  <line x1="600" y1="298" x2="700" y2="298" stroke="#8c564b" stroke-width="3"/>
+  <line x1="600" y1="326" x2="700" y2="326" stroke="#e377c2" stroke-width="3"/>
+  <line x1="600" y1="354" x2="700" y2="354" stroke="#17becf" stroke-width="3"/>
+
+  <!-- ===================== HX711 ===================== -->
+  <rect x="700" y="372" width="110" height="82" rx="6" fill="#fdecec" stroke="#333" stroke-width="1.5"/>
+  <text x="758" y="400" text-anchor="middle" font-weight="bold" fill="#222">HX711</text>
+  <g font-size="11" fill="#222">
+    <text x="708" y="386">DT</text>
+    <text x="708" y="414">SCK</text>
+    <text x="708" y="432">VCC</text>
+    <text x="708" y="450">GND</text>
+  </g>
+  <line x1="600" y1="382" x2="700" y2="382" stroke="#1f77b4" stroke-width="3"/>
+  <line x1="600" y1="410" x2="700" y2="410" stroke="#2ca02c" stroke-width="3"/>
+  <line x1="700" y1="428" x2="670" y2="428" stroke="#e07000" stroke-width="2.5"/>
+  <text x="664" y="432" text-anchor="end" fill="#e07000" font-weight="bold">3V3</text>
+  <line x1="700" y1="446" x2="670" y2="446" stroke="#222" stroke-width="2.5"/>
+  <text x="664" y="450" text-anchor="end" fill="#222" font-weight="bold">GND</text>
+  <!-- HX711 -> celula -->
+  <g font-size="10" fill="#222" text-anchor="end">
+    <text x="806" y="384">E+</text>
+    <text x="806" y="398">E−</text>
+    <text x="806" y="412">A−</text>
+    <text x="806" y="426">A+</text>
+  </g>
+  <line x1="810" y1="380" x2="880" y2="380" stroke="#d62728" stroke-width="2.5"/>
+  <line x1="810" y1="394" x2="880" y2="394" stroke="#222" stroke-width="2.5"/>
+  <line x1="810" y1="408" x2="880" y2="408" stroke="#aaaaaa" stroke-width="2.5"/>
+  <line x1="810" y1="422" x2="880" y2="422" stroke="#2ca02c" stroke-width="2.5"/>
+  <rect x="880" y="372" width="100" height="58" rx="3" fill="#d9d9d9" stroke="#333" stroke-width="1.5"/>
+  <text x="930" y="398" text-anchor="middle" font-weight="bold" fill="#222">Celulă</text>
+  <text x="930" y="414" text-anchor="middle" fill="#222">de sarcină</text>
+  <text x="930" y="446" text-anchor="middle" font-size="10" fill="#555">roșu/negru/alb/verde</text>
+
+  <!-- ===================== BUZZER ===================== -->
+  <rect x="700" y="458" width="110" height="34" rx="6" fill="#f2f2f2" stroke="#333" stroke-width="1.5"/>
+  <text x="708" y="470" font-size="11" fill="#222">+</text>
+  <text x="770" y="483" text-anchor="middle" font-weight="bold" fill="#222">Buzzer activ</text>
+  <line x1="600" y1="466" x2="700" y2="466" stroke="#9467bd" stroke-width="3"/>
+  <line x1="810" y1="484" x2="840" y2="484" stroke="#222" stroke-width="2.5"/>
+  <text x="846" y="488" fill="#222" font-weight="bold">GND</text>
+  <text x="846" y="472" font-size="10" fill="#555">(−)</text>
+
+  <!-- ===================== BUTOANE ===================== -->
+  <rect x="700" y="508" width="140" height="56" rx="6" fill="#ffecec" stroke="#b22" stroke-width="1.5"/>
+  <circle cx="800" cy="536" r="16" fill="#d62728" stroke="#333"/>
+  <text x="708" y="530" font-size="11" fill="#222">contact 1</text>
+  <text x="708" y="558" font-size="11" fill="#222">contact 2</text>
+  <text x="850" y="540" font-weight="bold" fill="#b22">STOP</text>
+  <line x1="600" y1="522" x2="700" y2="522" stroke="#7f7f7f" stroke-width="3"/>
+  <line x1="600" y1="550" x2="700" y2="550" stroke="#bcbd22" stroke-width="3"/>
+
+  <rect x="700" y="568" width="140" height="50" rx="6" fill="#ecffec" stroke="#2a2" stroke-width="1.5"/>
+  <circle cx="800" cy="593" r="16" fill="#2ca02c" stroke="#333"/>
+  <text x="708" y="582" font-size="11" fill="#222">contact 1</text>
+  <text x="708" y="610" font-size="11" fill="#222">contact 2</text>
+  <text x="850" y="597" font-weight="bold" fill="#2a2">START</text>
+  <line x1="600" y1="578" x2="700" y2="578" stroke="#7f7f7f" stroke-width="3"/>
+  <line x1="600" y1="606" x2="700" y2="606" stroke="#bcbd22" stroke-width="3"/>
+
+  <!-- ===================== NOTE ===================== -->
+  <g font-size="11.5" fill="#333">
+    <text x="40" y="656">• Toate intrările au pull-down intern: butoanele și comutatorul NU au nevoie de rezistențe. Pinii 41, 5 și 7 sunt ieșiri „VCC” (3,3 V) din firmware.</text>
+    <text x="40" y="676">• HX711 și encoderul la 3V3 (nu la 5 V!). Servo-ul direct din sursa de 5 V, cu GND comun cu placa.</text>
+    <text x="40" y="696">• Dacă Automat și Setup sunt inversate, schimbă între ele firele de pe pinii 40 și 42. Dacă greutatea iese negativă, inversează A+ cu A−.</text>
+  </g>
+</svg>
